@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Slots | Premium Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="container">
+        <header>
+            <h1 class="logo">LIQUID<span>SLOTS</span></h1>
+            <div class="header-right">
+                <button id="low-spec-toggle" class="btn-icon" title="Toggle Low Spec Mode">💨</button>
+                <div class="balance-card">
+                    <span class="label">Total Balance</span>
+                    <span class="amount" id="balance">$1,000</span>
+                </div>
+                <button id="deposit-btn" class="btn-deposit">+</button>
+            </div>
+        </header>
+
+        <!-- Deposit Modal (Glassmorphism) -->
+        <div id="deposit-modal" class="modal">
+            <div class="modal-content glass">
+                <h2>Add Funds</h2>
+                <div class="input-wrapper">
+                    <span class="currency">$</span>
+                    <input type="number" id="deposit-amount" placeholder="0" min="1">
+                </div>
+                <div class="modal-actions">
+                    <button onclick="closeDeposit()">Cancel</button>
+                    <button class="btn-confirm" onclick="confirmDeposit()">Add Money</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="slot-machine-wrapper">
+            <div class="slot-machine">
+                <div class="reel-container">
+                    <div class="reel" id="reel-1">
+                        <div class="reel-inner"><span class="symbol">🍕</span></div>
+                    </div>
+                    <div class="reel" id="reel-2">
+                        <div class="reel-inner"><span class="symbol">🍔</span></div>
+                    </div>
+                    <div class="reel" id="reel-3">
+                        <div class="reel-inner"><span class="symbol">🌭</span></div>
+                    </div>
+                    <div class="win-line"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="controls-section">
+            <div class="message-area" id="message">Place your bet and spin!</div>
+            
+            <div class="controls">
+                <div class="input-group">
+                    <label for="bet-amount">Bet Amount</label>
+                    <div class="input-wrapper">
+                        <span class="currency">$</span>
+                        <input type="number" id="bet-amount" value="10" min="1" step="1">
+                    </div>
+                </div>
+                
+                <button id="spin-button" class="btn-spin">
+                    <span class="btn-content">SPIN</span>
+                    <div class="btn-glare"></div>
+                </button>
+            </div>
+
+            <div class="quick-bets">
+                <button class="btn-quick" onclick="setBet(10)">$10</button>
+                <button class="btn-quick" onclick="setBet(50)">$50</button>
+                <button class="btn-quick" onclick="setBet(100)">$100</button>
+                <button class="btn-quick" id="max-bet">MAX</button>
+            </div>
+        </section>
+
+        <footer>
+            <div class="payout-info">
+                <h3>Payout Rules</h3>
+                <div class="rules-grid">
+                    <span>🍕 x3 / x2</span>
+                    <span>🍔 x4 / x3</span>
+                    <span>🌭 x5 / x4</span>
+                    <span>🥨 x10 / x5</span>
+                    <span>🍖 x30 / x15</span>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "liquid-slots",
+  "version": "1.0.0",
+  "description": "Premium Slot Machine",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y live-server --port=8080"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
