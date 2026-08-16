@@ -34,7 +34,8 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    filter: blur(80px); /* Reduced blur slightly for performance */
+    filter: blur(80px);
+    /* Reduced blur slightly for performance */
     pointer-events: none;
     will-change: transform;
 }
@@ -42,7 +43,8 @@ body {
 .blob {
     position: absolute;
     border-radius: 50%;
-    opacity: 0.3; /* Slightly lower opacity */
+    opacity: 0.3;
+    /* Slightly lower opacity */
     animation: move 25s infinite alternate ease-in-out;
     will-change: transform;
     backface-visibility: hidden;
@@ -75,8 +77,13 @@ body {
 }
 
 @keyframes move {
-    from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(100px, 100px) scale(1.2); }
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        transform: translate(100px, 100px) scale(1.2);
+    }
 }
 
 /* Container & Layout */
@@ -104,6 +111,7 @@ header {
 .logo span {
     background: var(--liquid-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -143,7 +151,7 @@ header {
     border-radius: 16px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .balance-card .label {
@@ -163,33 +171,39 @@ header {
 .slot-machine-wrapper {
     position: relative;
     padding: 20px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
     border-radius: 40px;
-    box-shadow: inset 0 0 40px rgba(255,255,255,0.05);
+    box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.05);
 }
 
 .slot-machine {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(25px); /* Reduced from 40px for better performance */
+    backdrop-filter: blur(25px);
+    /* Reduced from 40px for better performance */
     border: 1px solid var(--glass-border);
     border-radius: 30px;
     padding: 30px;
     position: relative;
     overflow: hidden;
-    transform: translateZ(0); /* Force GPU layer */
+    transform: translateZ(0);
+    /* Force GPU layer */
 }
 
 .slot-machine::after {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(180deg, 
-        rgba(10,10,20,1) 0%, 
-        rgba(10,10,20,0) 25%, 
-        rgba(10,10,20,0) 75%, 
-        rgba(10,10,20,1) 100%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg,
+            rgba(10, 10, 20, 1) 0%,
+            rgba(10, 10, 20, 0) 25%,
+            rgba(10, 10, 20, 0) 75%,
+            rgba(10, 10, 20, 1) 100%);
     pointer-events: none;
-    z-index: 4; /* Above everything to create the fade */
+    z-index: 4;
+    /* Above everything to create the fade */
 }
 
 .reel-container {
@@ -198,7 +212,8 @@ header {
     gap: 20px;
     height: 180px;
     position: relative;
-    z-index: 1; /* Ensure reels are above the background but below the overlay fade */
+    z-index: 1;
+    /* Ensure reels are above the background but below the overlay fade */
 }
 
 .reel {
@@ -207,11 +222,12 @@ header {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     overflow: hidden;
     position: relative;
-    border: 1px solid rgba(255,255,255,0.1);
-    z-index: 3; /* Above win-line? No, win-line should be on top. Let's make win-line 5. */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 3;
+    /* Above win-line? No, win-line should be on top. Let's make win-line 5. */
 }
 
 .reel-inner {
@@ -223,13 +239,15 @@ header {
 }
 
 .symbol {
-    font-size: 5rem; /* Slightly larger */
+    font-size: 5rem;
+    /* Slightly larger */
     height: 180px;
-    line-height: 180px; /* Force centering */
+    line-height: 180px;
+    /* Force centering */
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
 }
 
 .win-line {
@@ -331,10 +349,11 @@ header {
 .btn-glare {
     position: absolute;
     top: -50%;
-    left: -150%; /* Start outside */
+    left: -150%;
+    /* Start outside */
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transform: rotate(45deg);
     pointer-events: none;
 }
@@ -344,8 +363,13 @@ header {
 }
 
 @keyframes glare {
-    0% { left: -150%; }
-    100% { left: 150%; }
+    0% {
+        left: -150%;
+    }
+
+    100% {
+        left: 150%;
+    }
 }
 
 /* Low Spec Mode Overrides */
@@ -353,9 +377,9 @@ body.low-spec .background-blobs {
     display: none;
 }
 
-body.low-spec .slot-machine, 
-body.low-spec .balance-card, 
-body.low-spec .modal, 
+body.low-spec .slot-machine,
+body.low-spec .balance-card,
+body.low-spec .modal,
 body.low-spec .btn-deposit {
     backdrop-filter: none !important;
     background: rgba(20, 20, 30, 0.95) !important;
@@ -381,7 +405,7 @@ body.low-spec .btn-glare {
 }
 
 .btn-icon:hover {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .quick-bets {
@@ -391,7 +415,7 @@ body.low-spec .btn-glare {
 }
 
 .btn-quick {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
     color: white;
     padding: 0.6rem;
@@ -402,7 +426,7 @@ body.low-spec .btn-glare {
 }
 
 .btn-quick:hover {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 /* Payout Info */
@@ -411,7 +435,7 @@ footer {
 }
 
 .payout-info {
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--glass-border);
     padding: 1.5rem;
     border-radius: 20px;
@@ -432,7 +456,7 @@ footer {
 }
 
 .rules-grid span {
-    background: rgba(255,255,255,0.03);
+    background: rgba(255, 255, 255, 0.03);
     padding: 5px 10px;
     border-radius: 6px;
 }
@@ -443,8 +467,13 @@ footer {
 }
 
 @keyframes blurReel {
-    from { filter: blur(0px); }
-    to { filter: blur(4px); }
+    from {
+        filter: blur(0px);
+    }
+
+    to {
+        filter: blur(4px);
+    }
 }
 
 .winning-reel {
@@ -454,9 +483,17 @@ footer {
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* Modal Styles */
@@ -466,7 +503,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(10px);
     display: none;
     justify-content: center;
@@ -484,7 +521,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
 }
 
 .modal-content h2 {
@@ -514,7 +551,7 @@ footer {
 }
 
 .modal-actions button:not(.btn-confirm) {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     color: white;
     border: 1px solid var(--glass-border);
 }
@@ -529,17 +566,21 @@ footer {
     .container {
         padding: 1rem;
     }
+
     .reel-container {
         height: 120px;
         gap: 10px;
     }
+
     .symbol {
         height: 120px;
         font-size: 2.5rem;
     }
+
     .btn-spin {
         padding: 1rem 2rem;
     }
+
     .controls {
         flex-direction: column;
         align-items: stretch;

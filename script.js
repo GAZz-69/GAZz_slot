@@ -22,7 +22,7 @@ function initReels() {
 function updateBalance(amount) {
     balance = amount;
     balanceDisplay.textContent = `$${balance.toLocaleString()}`;
-    
+
     // Animate balance change
     balanceDisplay.classList.add('pulse');
     setTimeout(() => balanceDisplay.classList.remove('pulse'), 500);
@@ -70,7 +70,7 @@ async function spin() {
     });
 
     const finalSymbols = await Promise.all(reelAnimations);
-    
+
     const payout = calculatePayout(finalSymbols, bet);
 
     if (payout > 0) {
@@ -89,31 +89,34 @@ function animateReel(reel, index) {
     return new Promise(resolve => {
         const symbolCount = 15 + (index * 5); // Reduced from 20+10 to reduce DOM nodes
         const spinSymbols = [];
-        
+
         for (let i = 0; i < symbolCount; i++) {
             spinSymbols.push(symbols[Math.floor(Math.random() * symbols.length)]);
         }
-        
+
         const finalSymbol = spinSymbols[spinSymbols.length - 1];
-        
+
         // Build the vertical strip
         reel.innerHTML = spinSymbols.map(s => `<span class="symbol">${s}</span>`).join('');
-        
+
         // Reset position instantly
         reel.style.transition = 'none';
         reel.style.transform = 'translateY(0)';
-        
+
         // Force reflow
         void reel.offsetHeight;
-        
+
         // Animate using a cleaner duration
         const duration = 1 + (index * 0.4);
         reel.style.transition = `transform ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1)`;
         const symbolHeight = window.innerWidth <= 480 ? 120 : 180;
         const offset = (symbolCount - 1) * symbolHeight;
         reel.style.transform = `translateY(-${offset}px)`;
-        
+
         setTimeout(() => {
+            reel.style.transition = 'none';
+            reel.innerHTML = `<span class="symbol">${finalSymbol}</span>`;
+            reel.style.transform = 'translateY(0)';
             resolve(finalSymbol);
         }, duration * 1000);
     });
@@ -158,7 +161,7 @@ function calculatePayout(row, bet) {
 function showMessage(text, type) {
     messageArea.textContent = text;
     messageArea.style.color = type === "error" ? "#ff4d4d" : (type === "success" ? "#f5d142" : "rgba(255,255,255,0.6)");
-    
+
     if (type === "success") {
         messageArea.style.textShadow = "0 0 10px rgba(245, 209, 66, 0.5)";
     } else {
@@ -208,7 +211,7 @@ function confirmDeposit() {
         alert("Please enter a valid amount!");
         return;
     }
-    
+
     updateBalance(balance + amount);
     showMessage(`Successfully added $${amount}!`, "success");
     closeDeposit();
